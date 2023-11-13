@@ -1,4 +1,4 @@
-namespace: ci-cd
+namespace: default
 name: jenkins
 
 image:
