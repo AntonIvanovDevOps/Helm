@@ -1,35 +1,53 @@
-namespace: default
+replicaCount: 1
+namespace: ci-cd
 name: jenkins
-
 image:
   repository: jfrog.it-academy.by/public/jenkins-ci
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "ivanov_jenkins"
-
-
-
-replicaCount: 1
-
-resources:
-  limits:
-    cpu: 3000m
-    memory: 3000Mi
-  requests:
-    cpu: 2000m
-    memory: 2000Mi
-    
-    
-ip_server: 192.168.37.105
-nfs_mount: /mnt/IT-Academy/nfs-data/sa2-25-23/Ivanov/jenkins
+service:
+  httpport: 8080
+  jnlpport: 50000
 
 ingress:
+  name: ingress-jenkins
   enabled: true
-host_ingress: jenkins.k8s-2.sa
-server_alias: "jenkins.k8s-2.sa"
-ingress_port: 8080
+  className: ""
+  hosts:
+    host: jenkins.k8s-2.sa
+  
+resources: 
+  limits:
+    cpu: 3
+    memory: 3Gi
+  requests:
+    cpu: 2
+    memory: 2Gi
 
-master_p: 8080
-master_t: 8080
-slave_p: 50000
-slave_t: 50000 
+JenkinsAuthConfig: /var/jenkins_home/init.groovy.d/basic-security.groovy
+JACsubPath: basic-security.groovy
+JenkinsConfigYaml: /var/jenkins_home/casc_configs/jenkins.yaml
+JCYsubPath: jenkins.yaml
+JenkinsConfig: /var/jenkins_home
+
+nfs:
+   server: 192.168.37.105
+   path: /mnt/IT-Academy/nfs-data/sa2-25-23/Ivanov/jenkins
+
+configMap:
+   basic_name: basic-security
+   jenkins_name: jenkins-config
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

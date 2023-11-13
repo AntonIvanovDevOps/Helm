@@ -3,7 +3,7 @@ entries:
   jenkins:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-11-13T10:38:33.247699819Z"
+    created: "2023-11-13T11:00:54.401481724Z"
     description: A Helm chart for Kubernetes
     digest: 60da8edf0a3b333a4dbb80ec658bddf60ee7f5bee9a1710ca07c86c04682d4c1
     name: jenkins
@@ -11,4 +11,4 @@ entries:
     urls:
     - https://github.com/AntonIvanovDevOps/Helm/helm-releases/jenkins-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-13T10:38:33.246210782Z"
+generated: "2023-11-13T11:00:54.401124265Z"
