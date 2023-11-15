@@ -9,6 +9,6 @@ entries:
     name: jenkins
     type: application
     urls:
-    - https://github.com/AntonIvanovDevOps/Helm/helm-releases/jenkins-0.1.0.tgz
+    - https://github.com/AntonIvanovDevOps/Helm/tree/main/helm-releases
     version: 0.1.0
 generated: "2023-11-15T20:37:36.841709344Z"
