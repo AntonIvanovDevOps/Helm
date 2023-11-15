@@ -16,7 +16,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
-  namespace: {{ .Values.namespace }}
   labels:
     {{- include "jenkins.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
@@ -52,10 +51,10 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: 8080
+                  number: {{ $svcPort }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: 8080
+              servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
     {{- end }}
