@@ -1,9 +1,6 @@
 replicaCount: 1
 namespace: ci-cd
 name: jenkins
-release-namespace: default
-app.kubernetes.io/managed-by: "Helm"
-release-name: jenkins
 image:
   repository: jfrog.it-academy.by/public/jenkins-ci
   pullPolicy: IfNotPresent
@@ -12,6 +9,7 @@ image:
 service:
   htport: 8080
   jnlport: 50000
+
 
 JenkinsAuthConfig: /var/jenkins_home/init.groovy.d/basic-security.groovy
 JACsubPath: basic-security.groovy
